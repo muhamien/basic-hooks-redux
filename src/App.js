@@ -1,5 +1,5 @@
 import './App.css';
-import { ListKontak } from './components';
+import { ListKontak, AddKontak } from './components';
 
 function App() {
   return (
@@ -7,6 +7,8 @@ function App() {
       padding: "30px"
     }}>
       <h1>Welcome to Contact App</h1>
+      <hr />
+      <AddKontak />
       <hr />
       <ListKontak />
     </div >

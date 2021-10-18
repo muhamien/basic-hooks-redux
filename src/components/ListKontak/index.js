@@ -5,13 +5,14 @@ import { getListKontak } from '../../actions/kontakAction'
 
 
 function ListKontak() {
+
+
     const { getListKontakResult, getListKontakLoading, getListKontakError } = useSelector((state) => state.KontakReducer)
-    console.log('Component')
 
     const dispatch = useDispatch()
     useEffect(() => {
+        console.log("---ListKontak Component")
         // get list kontak
-        console.log(' |->1. Load Component')
         dispatch(getListKontak())
     }, [dispatch])
 
@@ -20,8 +21,7 @@ function ListKontak() {
             <h4>List Contact</h4>
             {
                 getListKontakResult ? (
-                    getListKontakResult.map((kontak) => {
-                        console.log('     show ' + kontak.id)
+                    getListKontakResult.slice(0).reverse().map((kontak) => {
                         return (
                             <p key={kontak.id}>{kontak.nama + " - " + kontak.nohp}</p>
                         )

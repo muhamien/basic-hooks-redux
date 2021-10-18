@@ -2,13 +2,12 @@ import axios from 'axios'
 
 // ini akan dioper ke reducer
 export const GET_LIST_KONTAK = "GET_LIST_KONTAK";
+export const ADD_KONTAK = "ADD_KONTAK";
 
 // Bikin actionnya seperti ini
 export const getListKontak = () => {
-    console.log('Masuk ke actions:')
     return (dispatch) => {
-        // is loading
-        console.log(' |->2. Middleware is loading')
+        // is loading 
         dispatch({
             type: GET_LIST_KONTAK,
             payload: {
@@ -18,15 +17,13 @@ export const getListKontak = () => {
             }
         })
 
-        // get API
-        console.log(' |->3. getting data...')
+        // get API 
         axios({
             method: "GET",
             url: "http://localhost:3000/kontak",
             timeout: 120000,
         }).then((response) => {
-            // kalo berhasil
-            console.log("  |-->Success: ", response.data)
+            // kalo berhasil 
             dispatch({
                 type: GET_LIST_KONTAK,
                 payload: {
@@ -36,10 +33,52 @@ export const getListKontak = () => {
                 }
             })
         }).catch((error) => {
-            // kalo gagal
-            console.log("  |-->Failed: ", error.message)
+            // kalo gagal 
             dispatch({
                 type: GET_LIST_KONTAK,
+                payload: {
+                    loading: false,
+                    data: false,
+                    errorMessage: error.message
+                }
+            })
+        })
+    }
+}
+
+// Action Post
+export const addKontak = (data) => {
+    return (dispatch) => {
+        // is loading 
+        dispatch({
+            type: ADD_KONTAK,
+            payload: {
+                loading: true,
+                data: false,
+                errorMessage: false
+            }
+        })
+
+        // Post API 
+        axios({
+            method: "POST",
+            url: "http://localhost:3000/kontak",
+            timeout: 120000,
+            data: data,
+        }).then((response) => {
+            // kalo berhasil 
+            dispatch({
+                type: ADD_KONTAK,
+                payload: {
+                    loading: false,
+                    data: response.data,
+                    errorMessage: false
+                }
+            })
+        }).catch((error) => {
+            // kalo gagal 
+            dispatch({
+                type: ADD_KONTAK,
                 payload: {
                     loading: false,
                     data: false,

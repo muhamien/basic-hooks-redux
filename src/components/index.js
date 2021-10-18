@@ -1,3 +1,6 @@
 import ListKontak from './ListKontak'
+import AddKontak from './AddKontak'
 
-export { ListKontak }
+console.log("Component")
+
+export { ListKontak, AddKontak }
