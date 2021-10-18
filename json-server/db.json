@@ -1,0 +1,14 @@
+{
+    "kontak": [
+        {
+            "id": 1,
+            "nama": "Muhammad Amien",
+            "nohp": "080012341234"
+        },
+        {
+            "id": 2,
+            "nama": "Gondes",
+            "nohp": "080000000001"
+        }
+    ]
+}

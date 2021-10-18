@@ -130,3 +130,36 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)))
 ```
 
 12. Run `npm start`
+
+
+## Installing JSON Server
+Install JSON server
+1. Oper terminal then run this command to globally install on your PC
+```
+npm install -g json-server
+```
+
+2. Create `json-server/db.json`
+```
+{
+    "kontak": [
+        {
+            "id": 1,
+            "nama": "Muhammad Amien",
+            "nohp": "080012341234"
+        },
+        {
+            "id": 2,
+            "nama": "Gondes",
+            "nohp": "080000000001"
+        }
+    ]
+}
+```
+
+3. Starting the server
+```
+json-server --watch db.json
+```
+
+Read the documentation of [JSON Server](https://github.com/typicode/json-server)
