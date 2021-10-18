@@ -68,3 +68,65 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Steps
+
+1. Create project `npx create-react-app basic-hooks-redux` in terminal/CMD
+
+2. Install Axios for handle API `npm i axios`
+
+3. Install Redux for handle state management `npm i redux`
+
+4. Install React Redux `npm i react-redux`
+
+5. Install Redux Thunk `npm i redux-thunk`
+
+6. Import axios,redux,react-redux,redux-thunk at `src/index.js`
+
+```
+import { createStore, compose, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import reducers from './reducers';
+```
+
+7. Create folder `src/actions` and `src/reducers`
+
+8. Create `src/reducers/index.js`
+```
+import { combineReducers } from 'redux'
+import kontakReducer from './kontak'
+
+export default combineReducers({
+    kontakReducer
+})
+```
+9. create `src/reducer/kontak/index.js`
+```
+const initialState = {
+
+}
+
+const kontak = (state = initialState, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+
+export default kontak;
+```
+10. Open `src\index.js` create store
+```
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
+```
+
+11. Compose `<App/>` with `<Provider>`
+```
+<Provider store={store}>
+    <App />
+</Provider>
+```
+
+12. Run `npm start`
