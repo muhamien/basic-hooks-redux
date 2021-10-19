@@ -1,4 +1,4 @@
-import { GET_LIST_KONTAK, ADD_KONTAK } from '../../actions/kontakAction'
+import { GET_LIST_KONTAK, ADD_KONTAK, DELETE_KONTAK } from '../../actions/kontakAction'
 
 // Step 3: create folder reducer/kontak
 const initialState = {
@@ -9,6 +9,10 @@ const initialState = {
     addKontakLoading: false,
     addKontakResult: false,
     addKontakError: false,
+
+    deleteKontakLoading: false,
+    deleteKontakResult: false,
+    deleteKontakError: false,
 }
 console.log("---Kontak Reducer");
 const kontak = (state = initialState, action) => {
@@ -26,6 +30,13 @@ const kontak = (state = initialState, action) => {
                 addKontakResult: action.payload.data,
                 addKontakLoading: action.payload.loading,
                 addKontakError: action.payload.errorMessage,
+            }
+        case DELETE_KONTAK:
+            return {
+                ...state,
+                deleteKontakResult: action.payload.data,
+                deleteKontakLoading: action.payload.loading,
+                deleteKontakError: action.payload.errorMessage,
             }
         default:
             return state;

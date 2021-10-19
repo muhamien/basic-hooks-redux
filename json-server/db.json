@@ -2,83 +2,8 @@
   "kontak": [
     {
       "nama": "Muhammad Amien",
-      "nohp": "123",
+      "nohp": "12345678",
       "id": 1
-    },
-    {
-      "nama": "amien",
-      "nohp": "321",
-      "id": 2
-    },
-    {
-      "nama": "rendi",
-      "nohp": "111",
-      "id": 3
-    },
-    {
-      "nama": "iqbal",
-      "nohp": "99292939",
-      "id": 4
-    },
-    {
-      "nama": "gf",
-      "nohp": "33333",
-      "id": 5
-    },
-    {
-      "nama": "Candi Gebang",
-      "nohp": "zzz",
-      "id": 6
-    },
-    {
-      "nama": "sinonim",
-      "nohp": "081212121212",
-      "id": 7
-    },
-    {
-      "nama": "sinonim",
-      "nohp": "081212121212",
-      "id": 8
-    },
-    {
-      "nama": "sinonim",
-      "nohp": "081212121212",
-      "id": 9
-    },
-    {
-      "nama": "sinonim",
-      "nohp": "081212121212",
-      "id": 10
-    },
-    {
-      "nama": "sinonim",
-      "nohp": "081212121212",
-      "id": 11
-    },
-    {
-      "nama": "sinonim",
-      "nohp": "081212121212",
-      "id": 12
-    },
-    {
-      "nama": "sinonim",
-      "nohp": "081212121212",
-      "id": 13
-    },
-    {
-      "nama": "Amien",
-      "nohp": "12121",
-      "id": 14
-    },
-    {
-      "nama": "12121",
-      "nohp": "212",
-      "id": 15
-    },
-    {
-      "nama": "asdasdas",
-      "nohp": "4234234",
-      "id": 16
     }
   ]
 }
