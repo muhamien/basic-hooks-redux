@@ -4,9 +4,12 @@ import axios from 'axios'
 export const GET_LIST_KONTAK = "GET_LIST_KONTAK";
 export const ADD_KONTAK = "ADD_KONTAK";
 export const DELETE_KONTAK = "DELETE_KONTAK";
+export const DETAIL_KONTAK = "DETAIL_KONTAK";
+export const UPDATE_KONTAK = "UPDATE_KONTAK";
 
 // Bikin actionnya seperti ini
 export const getListKontak = () => {
+    console.log("File: ./src/actions/KontakAction.js")
     return (dispatch) => {
         // is loading 
         dispatch({
@@ -94,7 +97,7 @@ export const deleteKontak = (id) => {
     return (dispatch) => {
         // is loading 
         dispatch({
-            type: DELETE_KONTAK,
+            type: UPDATE_KONTAK,
             payload: {
                 loading: true,
                 data: false,
@@ -110,7 +113,7 @@ export const deleteKontak = (id) => {
         }).then((response) => {
             // kalo berhasil 
             dispatch({
-                type: DELETE_KONTAK,
+                type: UPDATE_KONTAK,
                 payload: {
                     loading: false,
                     data: response.data,
@@ -120,7 +123,63 @@ export const deleteKontak = (id) => {
         }).catch((error) => {
             // kalo gagal 
             dispatch({
-                type: DELETE_KONTAK,
+                type: UPDATE_KONTAK,
+                payload: {
+                    loading: false,
+                    data: false,
+                    errorMessage: error.message
+                }
+            })
+        })
+    }
+}
+
+// Detail Kontak
+export const detailKontak = (data) => {
+    console.log('detail kontak :', data);
+    return (dispatch) => {
+        dispatch({
+            type: DETAIL_KONTAK,
+            payload: {
+                data: data
+            }
+        })
+    }
+}
+
+// Action Update
+export const updateKontak = (data) => {
+    return (dispatch) => {
+        // is loading 
+        dispatch({
+            type: ADD_KONTAK,
+            payload: {
+                loading: true,
+                data: false,
+                errorMessage: false
+            }
+        })
+
+        // Post API 
+        axios({
+            method: "PUT",
+            url: "http://localhost:3000/kontak/" + data.id,
+            timeout: 120000,
+            data: data,
+        }).then((response) => {
+            // kalo berhasil 
+            dispatch({
+                type: ADD_KONTAK,
+                payload: {
+                    loading: false,
+                    data: response.data,
+                    errorMessage: false
+                }
+            })
+        }).catch((error) => {
+            // kalo gagal 
+            dispatch({
+                type: ADD_KONTAK,
                 payload: {
                     loading: false,
                     data: false,

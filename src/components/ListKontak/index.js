@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { getListKontak, deleteKontak } from '../../actions/kontakAction'
+import { getListKontak, deleteKontak, detailKontak } from '../../actions/kontakAction'
 
 
 function ListKontak() {
-
-
+    console.log("File: ./src/component/ListKontak/index.js")
     const {
         getListKontakResult,
         getListKontakLoading,
         getListKontakError,
         deleteKontakResult,
-        deleteKontakLoading,
-        deleteKontakError,
     } = useSelector((state) => state.KontakReducer)
 
     const dispatch = useDispatch()
@@ -28,9 +25,10 @@ function ListKontak() {
         // get list kontak
         if (deleteKontakResult) {
             dispatch(getListKontak())
+        } else {
+
+            dispatch(getListKontak())
         }
-        // dispatch(getListKontak())
-        console.log("result: " + getListKontakResult)
     }, [deleteKontakResult, dispatch])
 
     return (
@@ -40,9 +38,10 @@ function ListKontak() {
                 getListKontakResult ? (
                     getListKontakResult.slice(0).reverse().map((kontak) => {
                         return (
-                            <div style={{ backgroundColor: 'gray', padding: '8px', margin: '4px', color: 'white', borderRadius: '8px' }}>
-                                <h2 style={{ fontWeight: 'bold' }} key={kontak.id}>{kontak.nama}</h2>
-                                <p style={{ fontWeight: '400' }} key={kontak.id}>{kontak.nohp}</p>
+                            <div key={kontak.id} style={{ backgroundColor: 'lightgray', padding: '8px', margin: '4px', borderRadius: '8px' }}>
+                                <h2 style={{ fontWeight: 'bold' }}>{kontak.nama}</h2>
+                                <p style={{ fontWeight: '400' }}>{kontak.nohp}</p>
+                                <button onClick={() => { dispatch(detailKontak(kontak)) }}>Edit</button>
                                 <button onClick={() => { handleDelete(kontak.id) }}>Delete</button>
                             </div>
                         )
@@ -50,7 +49,7 @@ function ListKontak() {
                 ) : getListKontakLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    <p p > {getListKontakError ? getListKontakError : 'not found'}</p>
+                    <p>{getListKontakError ? getListKontakError : 'Not found'}</p>
                 )
             }
         </div >
